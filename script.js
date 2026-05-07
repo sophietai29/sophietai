@@ -1,7 +1,13 @@
-const contactLinks = document.querySelectorAll(".contact-link");
+const fadeElements = document.querySelectorAll(".fade-up");
 
-contactLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    console.log("Contact link clicked:", link.textContent.trim());
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
   });
+});
+
+fadeElements.forEach((element) => {
+  observer.observe(element);
 });
